@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>home</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <style>
+            <!-- Aligner v et h -->
+            html, body {
+                height: 100%;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body class="container container-fluid mt-5" style="margin-bottom: 50%;">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-3 mt-5">
+                <div class="card mt-5 py-2 shadow">
+                    <divc class="h2 text-center text-primary">
+                        Paiement inpots
+                    </divc>
+                    <div class="card-body py-2 shadow">
+                        <div class="mt-2">
+                            Bienvenue dans notre systeme qui vous permet d'effectuer vos paiements impots. Pour commencer entrer votre adresse email.
+                        </div>
+                        <form action="#" th:action="@{/login}" method="post" class="form-group">
+                            <label for="email" class="form-group mt-2">Adresse email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+
+                            <div class="text-danger text-center alert mt-2" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
+                            <input type="submit" class="btn btn-primary mt-3 text-center center" value="Commencer">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

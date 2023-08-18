@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/../header}">
+  <head>
+      <meta charset="UTF-8">
+      <title>Ajout declarant</title>
+      <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  </head>
+  <body class="container container-fluid">
+    <div th:replace="~{/header :: header}"></div>
+    <div layout:fragment="content">
+        <div class="card mt-4">
+            <div class="card-body shadow py-1">
+                <h3 class="">  Ajouter un Déclarant</h3>
+                <div layout:fragment="content" class="mt-3">
+
+                    <div class="text-danger text-center alert" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
+                    <div class="text-success text-center alert" th:if="${successMessage}" th:text="${successMessage}" role="alert"></div>
+
+                    <form action="#" th:action="@{/api/declarant/add}" method="post" class="form-group">
+                        <label for="raisonSociale" class="form-group mt-2">Raison Sociale</label>
+                        <input type="text" id="raisonSociale" name="raisonSociale" class="form-control" required>
+                        <br>
+                        <label for="adresse" class="form-group">Adresse</label>
+                        <input type="text" id="adresse" name="adresse" class="form-control" required>
+                        <br>
+                        <label for="email" class="form-group">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <br>
+                        <label for="telephone" class="form-group">Téléphone</label>
+                        <input type="text" id="telephone" name="telephone" class="form-control" required>
+                        <br>
+                        <div class="col-md-3 offset-5">
+                            <input type="submit" class="btn btn-primary mt-3 ms-auto" value="Ajouter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

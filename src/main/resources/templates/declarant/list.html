@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/../header}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste declarants</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    </head>
+    <body class="container container-fluid">
+        <div th:replace="~{/header :: header}"></div>
+        <div layout:fragment="content">
+<!--        <div class="col-md-10 offset-1 mt-2">-->
+            <h3 class="mt-3">Liste des Déclarants</h3>
+            <table class="table table-bordered table-striped shadow py-1 mt-3">
+                <tr>
+                    <th>Raison Sociale</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                </tr>
+                <tr th:each="declarant : ${declarants}">
+                    <td class="align-middle" th:text="${declarant.raisonSociale}"></td>
+                    <td class="align-middle" th:text="${declarant.adresse}"></td>
+                    <td class="align-middle" th:text="${declarant.email}"></td>
+                    <td class="align-middle" th:text="${declarant.telephone}"></td>
+                </tr>
+            </table>
+        </div>
+<!--        </div>-->
+    </body>
+</html>
