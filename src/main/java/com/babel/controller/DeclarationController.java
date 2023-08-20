@@ -2,15 +2,15 @@ package com.babel.controller;
 import com.babel.dto.DeclarationDto;
 import com.babel.entities.Declarant;
 import com.babel.entities.Declaration;
+import com.babel.entities.Paiement;
 import com.babel.helper.Helper;
 import com.babel.service.DeclarantService;
 import com.babel.service.DeclarationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -61,10 +61,45 @@ public class DeclarationController {
         if (!declarations.isEmpty()){
             model.addAttribute("declarations", declarations);
         }else{
-            model.addAttribute("errorMessage", "Pas de declaration a paye ...");
+            model.addAttribute("errorMessage", "Pas de declaration à payer ...");
         }
 
         return "declaration/list";
+    }
+
+    @GetMapping("/details")
+    public String viewDeclarationPayments(@RequestParam("id") Long declarationId, Model model) {
+        Declaration declaration = declarationService.getDeclarationById(declarationId);
+        List<Paiement> paiementList = declaration.getPaiements();
+
+        if (!paiementList.isEmpty()) {
+            String statut;
+            double paye = 0.0;
+
+            for (Paiement p : paiementList) {
+                paye = paye + p.getMontantPaiement();
+                //System.out.print(paye);
+            }
+
+            if (paye == declaration.getMontantDeclaration()) {
+                statut = "Réglé";
+                model.addAttribute("statut", statut);
+                model.addAttribute("msg", "Cette declaration a ete reglee avec succes ...");
+            } else {
+                statut = "Non Réglé";
+                model.addAttribute("statut", statut);
+                double restant = declaration.getMontantDeclaration() - paye;
+                model.addAttribute("restant", restant);
+            }
+
+            model.addAttribute("declaration", declaration);
+            model.addAttribute("paiements", paiementList);
+
+        }else{
+            model.addAttribute("msg", "Aucun paiement n'a été effectué pour cette déclaration !!!");
+        }
+
+        return "declaration/paiement";
     }
 
 }

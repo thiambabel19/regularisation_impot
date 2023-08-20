@@ -23,6 +23,7 @@
                     <td class="align-middle" th:text="${declaration.declarant.email}"></td>
                     <td class="align-middle text-center">
                         <a class="btn btn-success text-center" th:href="@{/api/paiement/addForm(id=${declaration.id})}">Payer</a>
+                        <a class="btn btn-info ms-3 text-white text-center" th:href="@{/api/declaration/details(id=${declaration.id})}">Détails</a>
                     </td>
                 </tr>
             </table>

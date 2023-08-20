@@ -46,9 +46,9 @@ public class PaiementController {
         if (isValidDate) {
             Declaration declaration = declarationService.getDeclaration(id);
 
-            if (declaration.getMontantDeclaration() > montantPaiement){
-                model.addAttribute("payMessage", "Le montant à payer est inferieur à ce que vous avez saisi !!!");
-            }
+//            if (declaration.getMontantDeclaration() > montantPaiement){
+//                model.addAttribute("payMessage", "Le montant à payer est inferieur à ce que vous avez saisi !!!");
+//            }
 
             PaiementDto paiementDto = new PaiementDto();
             paiementDto.setDatePaiement(datePaiement);

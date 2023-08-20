@@ -41,6 +41,14 @@ public class DeclarationService {
     }
 
     @Transactional(readOnly = true)
+    public Declaration getDeclarationById(Long id) {
+        return iDeclarationRepository.findById(id)
+                .orElseThrow(() ->
+                        new EntityNotFoundException(messageSource.getMessage("declaration.notfound", new Object[]{id},
+                                Locale.getDefault())));
+    }
+
+    @Transactional(readOnly = true)
     public Declaration getDeclaration(Long id) {
         return iDeclarationRepository.findById(id)
                 .orElseThrow(() ->

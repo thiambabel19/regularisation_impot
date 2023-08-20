@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class Declaration {
-//    id long, dateDeclaration date, montantDeclaration  double, idDeclarant long
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,10 +20,10 @@ public class Declaration {
 
     private double montantDeclaration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Declarant_ID")
     private Declarant declarant;
 
-    @OneToMany
+    @OneToMany(mappedBy = "declaration", cascade = CascadeType.ALL)
     private List<Paiement> paiements;
 }
