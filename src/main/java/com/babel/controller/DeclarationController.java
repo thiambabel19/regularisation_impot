@@ -77,7 +77,7 @@ public class DeclarationController {
             double paye = 0.0;
 
             for (Paiement p : paiementList) {
-                paye = paye + p.getMontantPaiement();
+                paye += p.getMontantPaiement();
                 //System.out.print(paye);
             }
 

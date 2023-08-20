@@ -8,7 +8,7 @@
     <body class="container container-fluid">
     <div th:replace="~{/header :: header}"></div>
         <div layout:fragment="content">
-            <h3 class="mt-3">Liste des Déclarations</h3>
+            <h4 class="mt-3">Liste des Déclarations</h4>
             <div class="h3 text-danger text-center alert" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
             <table class="table table-bordered table-striped shadow py-1 mt-3" th:if="${declarations}">
                 <tr>

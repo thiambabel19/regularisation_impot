@@ -9,7 +9,7 @@
         <div th:replace="~{/header :: header}"></div>
         <div layout:fragment="content">
 <!--        <div class="col-md-10 offset-1 mt-2">-->
-            <h3 class="mt-3">Liste des Déclarants</h3>
+            <h4 class="mt-3">Liste des Déclarants</h4>
             <div class="h3 text-danger text-center alert mt-3" th:if="${msg}" th:text="${msg}" role="alert"></div>
             <table class="table table-bordered table-striped shadow py-1 mt-3" th:if="${declarants}">
                 <tr>
