@@ -1,7 +1,6 @@
 package com.babel.service;
 
 import com.babel.dao.IDeclarationRepository;
-import com.babel.dto.DeclarantDto;
 import com.babel.dto.DeclarationDto;
 import com.babel.entities.Declarant;
 import com.babel.entities.Declaration;
@@ -58,6 +57,11 @@ public class DeclarationService {
                             iDeclarationRepository.save(declarationMapper.fromDeclaration(declarationDto)));
                 }).orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("declaration.notfound", new Object[]{id},
                         Locale.getDefault())));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Declaration> getDeclarationNonReglee() {
+        return iDeclarationRepository.getDeclarationNonReglee();
     }
 
 }

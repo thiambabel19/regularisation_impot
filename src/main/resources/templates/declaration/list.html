@@ -9,16 +9,21 @@
     <div th:replace="~{/header :: header}"></div>
         <div layout:fragment="content">
             <h3 class="mt-3">Liste des Déclarations</h3>
-            <table class="table table-bordered table-striped shadow py-1 mt-3">
+            <div class="h3 text-danger text-center alert" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
+            <table class="table table-bordered table-striped shadow py-1 mt-3" th:if="${declarations}">
                 <tr>
                     <th>Date Declaration</th>
                     <th>Montant</th>
                     <th>Email Declarant</th>
+                    <th class="text-center">ACTION</th>
                 </tr>
                 <tr th:each="declaration : ${declarations}">
                     <td class="align-middle" th:text="${declaration.dateDeclaration}"></td>
                     <td class="align-middle" th:text="${declaration.montantDeclaration}"></td>
                     <td class="align-middle" th:text="${declaration.declarant.email}"></td>
+                    <td class="align-middle text-center">
+                        <a class="btn btn-success text-center" th:href="@{/api/paiement/addForm(id=${declaration.id})}">Payer</a>
+                    </td>
                 </tr>
             </table>
         </div>

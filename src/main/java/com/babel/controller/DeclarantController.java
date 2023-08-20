@@ -40,7 +40,11 @@ public class DeclarantController {
     @GetMapping("/list")
     public String getAllDeclarants(Model model) {
         List<DeclarantDto> declarants = declarantService.getAllDeclarants();
-        model.addAttribute("declarants", declarants);
+        if (!declarants.isEmpty()){
+            model.addAttribute("declarants", declarants);
+        }else {
+            model.addAttribute("msg", "Aucun declarant n'a ete enregistre !!!");
+        }
         return "declarant/list";
     }
 

@@ -15,6 +15,7 @@
 
                     <div class="text-danger text-center alert" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
                     <div class="text-success text-center alert" th:if="${successMessage}" th:text="${successMessage}" role="alert"></div>
+                    <div class="text-danger text-center alert" th:if="${dateMessage}" th:text="${dateMessage}" role="alert"></div>
 
                     <form action="#" th:action="@{/api/declaration/add}" method="post" class="form-group">
                         <label for="dateDeclaration" class="form-group mt-2">Date de la declaration ("dd/MM/yyyy")</label>
@@ -23,7 +24,12 @@
                         <label for="montant" class="form-group">Montant</label>
                         <input type="number" id="montant" name="montant" class="form-control" required>
                         <br>
-                        <div class="col-md-3 offset-5">
+                        <label for="montant" class="form-group">Email du déclarant</label>
+                        <select class="form-control" name="declarant_id">
+                            <option selected class="form-control" disabled></option>
+                            <option th:each="declarant : ${declarants}" th:value="${declarant.id}" th:text="${declarant.email}" class="form-control"></option>
+                        </select>
+                        <div class="col-md-3 offset-5 mt-3">
                             <input type="submit" class="btn btn-primary mt-3 ms-auto" value="Declarer">
                         </div>
                     </form>

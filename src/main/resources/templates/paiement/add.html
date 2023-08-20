@@ -15,8 +15,16 @@
 
                     <div class="text-danger text-center alert" th:if="${errorMessage}" th:text="${errorMessage}" role="alert"></div>
                     <div class="text-success text-center alert" th:if="${successMessage}" th:text="${successMessage}" role="alert"></div>
+                    <div class="text-danger text-center alert" th:if="${payMessage}" th:text="${payMessage}" role="alert"></div>
 
                     <form action="#" th:action="@{/api/paiement/add}" method="post" class="form-group">
+                        <input type="hidden" id="id" th:value="${declaration.id}" name="id" class="form-control">
+                        <label for="dateDeclaration" class="form-group">Date declaration</label>
+                        <input type="text" id="dateDeclaration" th:value="${declaration.dateDeclaration}" name="dateDeclaration" class="form-control" readonly required>
+                        <br>
+                        <label for="montantDeclaration" class="form-group">Montant à payer</label>
+                        <input type="number" id="montantDeclaration" th:value="${declaration.montantDeclaration}" name="montantDeclaration" class="form-control" readonly required>
+                        <br>
                         <label for="datePaiement" class="form-group mt-2">Date du paiement ("dd/MM/yyyy")</label>
                         <input type="text" placeholder="dd/MM/yyyy" id="datePaiement" name="datePaiement" class="form-control" required>
                         <br>

@@ -1,6 +1,7 @@
 package com.babel.controller;
 import com.babel.dto.DeclarationDto;
 import com.babel.entities.Declarant;
+import com.babel.entities.Declaration;
 import com.babel.helper.Helper;
 import com.babel.service.DeclarantService;
 import com.babel.service.DeclarationService;
@@ -23,15 +24,16 @@ public class DeclarationController {
     private DeclarantService declarantService;
 
     @GetMapping("/addForm")
-    public String ajoutDeclarationForm(){
+    public String ajoutDeclarationForm(Model model){
+        model.addAttribute("declarants", declarantService.getAllDeclarants());
         return "declaration/add";
     }
     @PostMapping("/add")
-    public String addDeclaration(Model model, String dateDeclaration, double montant) {
+    public String addDeclaration(Model model, String dateDeclaration, double montant, Long declarant_id) {
         boolean isValidDate = Helper.isDateValid(dateDeclaration, "dd/MM/yyyy");
         if(isValidDate){
-            Declarant declarant = declarantService.getDeclarant(1L); // A recuperer selon le user connecte si on integré la securite
-            //System.out.print(declarant.getId());
+            Declarant declarant = declarantService.getDeclarant(declarant_id);
+            System.out.print(declarant_id);
             DeclarationDto declarationDto = new DeclarationDto();
             declarationDto.setDateDeclaration(dateDeclaration);
             declarationDto.setMontantDeclaration(montant);
@@ -46,15 +48,23 @@ public class DeclarationController {
             }
 
         }else{
-            model.addAttribute("errorMessage", "Le format de la date est valide : 'dd/MM/yyy'.");
+            model.addAttribute("dateMessage", "Le format de la date est valide : 'dd/MM/yyy'.");
         }
 
-        return ajoutDeclarationForm();
+        return ajoutDeclarationForm(model);
     }
+
     @GetMapping("/list")
-    public String getAllDeclarations(Model model) {
-        List<DeclarationDto> declarations = declarationService.getAllDeclarations();
-        model.addAttribute("declarations", declarations);
+    public String getDeclarationNonReglee(Model model) {
+        List<Declaration> declarations = declarationService.getDeclarationNonReglee();
+
+        if (!declarations.isEmpty()){
+            model.addAttribute("declarations", declarations);
+        }else{
+            model.addAttribute("errorMessage", "Pas de declaration a paye ...");
+        }
+
         return "declaration/list";
     }
+
 }
