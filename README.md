@@ -2,7 +2,7 @@
 springboot-thymleaf
 
 Architecture du projet:
-![image](https://user-images.githubusercontent.com/C:\Users\moham\Downloads\architecture.png)
+![image](C:\Users\moham\Downloads\architecture.png)
 "C:\Users\moham\Downloads\architecture.png"
 
 Base de donnees:
