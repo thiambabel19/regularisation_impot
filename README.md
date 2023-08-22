@@ -35,7 +35,10 @@ ici on peut effectuer des paiements sur une declaration specifique mais aussi de
 Et une fois que la declaration est reglee elle ne sera plus visible dans cette liste.
 
 
-![listDeclaration](https://github.com/thiambabel19/regularisation_impot/assets/95770196/db1f3c77-2c53-4d4d-9bc5-9f398d77bb6c)
+
+![listDeclaration](https://github.com/thiambabel19/regularisation_impot/assets/95770196/5ed5f42f-1b5a-4832-82c7-0616756047bc)
+
+
 
 
 Effectuer un paiement:
