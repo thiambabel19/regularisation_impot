@@ -8,15 +8,12 @@ Architecture du projet:
 
 Base de donnees:
 
-
 ![bd](https://github.com/thiambabel19/regularisation_impot/assets/95770196/7487e1bd-4692-4dc5-a4f0-a22d3222f597)
 
 
 Ajout d'un declarant:
 
-
 ![addDeclarant](https://github.com/thiambabel19/regularisation_impot/assets/95770196/ee83ac82-552c-4c70-884e-a958df9053e3)
-
 
 
 Liste des declarants:
@@ -25,12 +22,10 @@ Liste des declarants:
 ![listDeclarant](https://github.com/thiambabel19/regularisation_impot/assets/95770196/a28279a1-85f7-483e-9a4a-04b84bdee080)
 
 
-
 Ajout d'une declaration:
 
 
 ![addDeclaration](https://github.com/thiambabel19/regularisation_impot/assets/95770196/686b5e89-def3-49fb-86a6-f1ecf21debac)
-
 
 
 Liste des declaration non reglee:
