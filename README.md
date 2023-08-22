@@ -8,7 +8,7 @@ Architecture du projet:
 
 Base de donnees:
 
-![bd](https://github.com/thiambabel19/regularisation_impot/assets/95770196/7487e1bd-4692-4dc5-a4f0-a22d3222f597)
+![bd](https://github.com/thiambabel19/regularisation_impot/assets/95770196/a2fcd04a-00ec-49c1-b5af-41df4e255f39)
 
 
 Ajout d'un declarant:
